@@ -1,0 +1,6 @@
+c:\projects\McUnit\McUnit.TestScenarios\bin\Debug\McUnit.TestScenarios.dll
+c:\projects\McUnit\McUnit.TestScenarios\bin\Debug\McUnit.TestScenarios.pdb
+c:\projects\McUnit\McUnit.TestScenarios\bin\Debug\nunit.framework.xml
+c:\projects\McUnit\McUnit.TestScenarios\obj\Debug\McUnit.TestScenarios.csprojResolveAssemblyReference.cache
+c:\projects\McUnit\McUnit.TestScenarios\obj\Debug\McUnit.TestScenarios.dll
+c:\projects\McUnit\McUnit.TestScenarios\obj\Debug\McUnit.TestScenarios.pdb
