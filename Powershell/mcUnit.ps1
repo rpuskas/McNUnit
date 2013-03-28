@@ -1,12 +1,11 @@
+$ProjectDir = Resolve-Path "..\"
+$TestDir = "$ProjectDir\McUnit.TestScenarios\bin\Debug"
 
-$ProjectDir = "..\" 
-$PackagesDir = "..\packages"
-$TestDir = "..\McUnit.TestScenarios\bin\Debug"
-
-$nunitPath = resolve-path "..\packages\NUnit.Runners.2.6.2\tools"
-$nunitArguments = "/noshadow /framework:net-4.0"
+$nunitPath = "$ProjectDir\packages\NUnit.Runners.2.6.2\tools"
 $tests = (Get-ChildItem $TestDir -Recurse -Include *McUnit.TestScenarios.dll)
-$job = Start-Job { param($path,$args) & "$path\nunit-console.exe $args" } -ArgumentList $nunitPath, $nunitArguments
+$nunitArguments = "$tests"
 
+
+$job = Start-Job -ScriptBlock { param($expression) Invoke-Expression "$expression"  } -ArgumentList "$nunitPath\nunit-console.exe $nunitArguments"
 Wait-Job $job
 Receive-Job -job $job
