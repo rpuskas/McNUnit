@@ -33,10 +33,19 @@ function Get-TestFixtures {
 }
 
 $fxs = Get-TestFixtures $testAssembly;
-$exp = Get-NunitExpression $nunitPath $fxs
 write-host $exp;
 
+$jobs = @()
+foreach($fixture in $fxs)
+{
+    $exp = Get-NunitExpression $nunitPath $fixture
+    $jobs += Start-Job -ScriptBlock { param($expression) Invoke-Expression "$expression"  } -ArgumentList $exp    
+}
 
-$job = Start-Job -ScriptBlock { param($expression) Invoke-Expression "$expression"  } -ArgumentList $exp
-Wait-Job $job
-Receive-Job -job $job
+foreach($job in $jobs)
+{
+    Wait-Job $job
+    Receive-Job -job $job
+    Remove-Job -job $job
+}
+
