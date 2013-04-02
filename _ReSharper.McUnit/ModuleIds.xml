@@ -1,0 +1,4 @@
+<Modules>
+  <Module PersistentId="1969932A-8EB6-441D-BAEE-C7E07FE7D613" ModuleId="McUnit.TestScenarios" />
+  <Module PersistentId="158EC199-5F6A-4B51-AE9E-5E52EE6CA17D" ModuleId="McUnit.Runner" />
+</Modules>

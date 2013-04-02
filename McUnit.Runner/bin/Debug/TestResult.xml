@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Users\rpuskas\AppData\Local\Temp\rm1e0lzx.xmg\McUnit.Runner\assembly\dl3\1c4436a9\35b5d255_c02fce01\McUnit.TestScenarios.dll" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2013-04-02" time="11:53:10">
+  <environment nunit-version="2.6.2.12296" clr-version="4.0.30319.18034" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\projects\McUnit\McUnit.Runner\bin\Debug" machine-name="HAL" user="rpuskas" user-domain="HAL" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\Users\rpuskas\AppData\Local\Temp\rm1e0lzx.xmg\McUnit.Runner\assembly\dl3\1c4436a9\35b5d255_c02fce01\McUnit.TestScenarios.dll" executed="True" result="Success" success="True" time="2.071" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="McUnit" executed="True" result="Success" success="True" time="2.053" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="TestScenarios" executed="True" result="Success" success="True" time="2.052" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="Fixture3" executed="True" result="Success" success="True" time="2.050" asserts="0">
+                <results>
+                  <test-case name="McUnit.TestScenarios.Fixture3.TwoSeconds" executed="True" result="Success" success="True" time="2.032" asserts="1" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
