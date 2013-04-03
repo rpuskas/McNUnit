@@ -4,27 +4,28 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using McUnit.TestScenarios;
 using NUnit.Framework;
 
 namespace McUnit.Runner
 {
     public class ParallelRunner
     {
-        private const int BATCHSIZE = 3;
+        private readonly int _batchSize = 3;
         private readonly Queue<Type> _queue;
         private readonly List<Task> _tasks;
         private readonly Assembly _assembly;
 
-        public ParallelRunner()
+        public ParallelRunner(int batchSize,string assemblyFile)
         {
-            _assembly = Assembly.GetAssembly(typeof(Fixture1));
+            _batchSize = batchSize;
+            _assembly = Assembly.LoadFrom(assemblyFile);
             _queue = new Queue<Type>(_assembly.GetTypes().Where(HasFixtureAttribute));
             _tasks = new List<Task>();
         }
 
         public void Run()
         {
+            Console.WriteLine(_assembly.Location);
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
@@ -36,7 +37,7 @@ namespace McUnit.Runner
 
         private void RunAllTests()
         {
-            for (var i = 0; i < BATCHSIZE; i++)
+            for (var i = 0; i < _batchSize; i++)
             {
                 _tasks.Add(new Task(ProcessNextItem));
             }

@@ -1,12 +1,13 @@
 function Run-Program
 {
     $ProjectDir = Resolve-Path "..\"
+    $TestDll = "$ProjectDir\McUnit.TestScenarios\bin\Debug\McUnit.TestScenarios.dll"
+    $RunnerDll = "$ProjectDir\McUnit.Runner\bin\Debug\McUnit.Runner.dll"
 
-    $TestDir = "$ProjectDir\McUnit.Runner\bin\Debug\"
-    Add-Type -Path $TestDir"McUnit.Runner.dll"
+    Add-Type -Path $RunnerDll
 
 
-    $object = New-Object -TypeName McUnit.Runner.ParallelRunner
+    $object = New-Object -TypeName McUnit.Runner.ParallelRunner -ArgumentList 2,$TestDll
     $object.Run() 
     
 }
