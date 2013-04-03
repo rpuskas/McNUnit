@@ -9,7 +9,6 @@ using NUnit.Framework;
 
 namespace McUnit.Runner
 {
-    [TestFixture]
     public class ParallelRunner
     {
         private const int BATCHSIZE = 3;
@@ -24,7 +23,6 @@ namespace McUnit.Runner
             _tasks = new List<Task>();
         }
 
-        [Test]
         public void Run()
         {
             var stopwatch = new Stopwatch();
