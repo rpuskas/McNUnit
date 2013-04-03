@@ -1,15 +1,27 @@
-﻿using System.Threading;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace McUnit.TestScenarios
 {
+    static internal class CpuConsumer
+    {
+        public static void For(int seconds)
+        {
+            var stopped = false;
+            var timer = new System.Timers.Timer(seconds * 1000);
+            timer.Elapsed += (s, e) => stopped = true;
+            timer.Start();
+
+            while (!stopped) { } //eat them all
+        }
+    }
+
     [TestFixture]
     public class Fixture1
     {
         [Test]
-        public void TestOneSecond()
+        public void One()
         {
-            Thread.Sleep(1000);
+            CpuConsumer.For(5);
             Assert.IsTrue(true);
         }
     }
@@ -18,16 +30,16 @@ namespace McUnit.TestScenarios
     public class Fixture2
     {
         [Test]
-        public void OneSecond()
+        public void One()
         {
-            Thread.Sleep(1000);
+            CpuConsumer.For(5);
             Assert.IsTrue(true);
         }
 
         [Test]
-        public void TwoSeconds()
+        public void Two()
         {
-            Thread.Sleep(2000);
+            CpuConsumer.For(5);
             Assert.IsTrue(true);
         }
     }
@@ -36,9 +48,9 @@ namespace McUnit.TestScenarios
     public class Fixture3
     {
         [Test]
-        public void TwoSeconds()
+        public void One()
         {
-            Thread.Sleep(2000);
+            CpuConsumer.For(10); 
             Assert.IsTrue(true);
         }
     }

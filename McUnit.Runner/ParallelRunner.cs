@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace McUnit.Runner
     [TestFixture]
     public class ParallelRunner
     {
-        private const int BATCHSIZE = 2;
+        private const int BATCHSIZE = 3;
         private readonly Queue<Type> _queue;
         private readonly List<Task> _tasks;
         private readonly Assembly _assembly;
@@ -26,7 +27,17 @@ namespace McUnit.Runner
         [Test]
         public void Run()
         {
-            
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            RunAllTests();
+
+            stopwatch.Stop();
+            Console.WriteLine(stopwatch.Elapsed);
+        }
+
+        private void RunAllTests()
+        {
             for (var i = 0; i < BATCHSIZE; i++)
             {
                 _tasks.Add(new Task(ProcessNextItem));
